@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/../../PDO/www/index.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/classes/sql.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/controler/registration.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/index.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/login.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/logout.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/cabinet.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/header.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/news_name.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/open.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/regist.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../cms2/templates/ox2.php" charset="UTF-8" />
+  </component>
+</project>
