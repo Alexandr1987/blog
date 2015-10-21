@@ -9,7 +9,7 @@ session_start();
 var_dump($logins);
 
 foreach ($logins->items as $item) {
-    echo $item;sdf
+    echo $item;
     /*if ($item->login == $log) {
         $_SESSION['error'] = 'Такой логин уже существует!';
         header('Location: ../views/regist.php');
