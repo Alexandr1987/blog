@@ -8,6 +8,7 @@ $logins = $l::findAll();
 session_start();
 var_dump($logins);
 
+
 foreach ($logins->items as $item) {
     echo $item->login;
     /*if ($item->login == $log) {
