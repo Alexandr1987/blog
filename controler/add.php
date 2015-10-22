@@ -8,18 +8,18 @@ $text = $_POST['text_news'];
 $img = $_POST['image'];
 $date = date("F j, Y, g:i a");
 $avtor=getUser();
-$img = new Sql('localhost','root','','news');
+$img = new Login;
     $avt=getUser();
-    $avtors= $img->get_info('info');
+    $avtors= $img::findAll();
     foreach ($avtors as $key) {
-        if($key['login']==$avt)
-            $img_src = $key['path'];
+        if($key->login == $avt)
+            $img_src = $key->login;
     };
 
 
 
-$b = new User;
-$b->Insert($name,$text,$avtor);
+$b = new News;
+$b->insert($name,$text,$avtor);
 
 
 

@@ -1,6 +1,9 @@
 <?
-require_once __DIR__.'/classes/sql.php';
+require_once __DIR__.'/autoload.php';
 
-$newses = $a->get_info('new_news');
+
+$newses = News::findAll();
+
+
 
 include_once __DIR__.'/views/open.php';

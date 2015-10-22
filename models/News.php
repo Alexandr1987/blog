@@ -1,19 +1,21 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: ÐÐ»ÐµÐºÑÐ°Ð½Ð´Ñ€
- * Date: 17.10.2015
- * Time: 20:35
+ * User: Àëåêñàíäð
+ * Date: 22.10.2015
+ * Time: 21:59
  */
+
 require_once __DIR__.'/../autoload.php';
-abstract class User
+class News
+    extends User
 {
     const TABLE = 'new_news';
 
 
     public static function findAll(){
         $dbh = new Connection();
-        $sql = 'SELECT * FROM ' . self::TABLE . '';
+        $sql = 'SELECT * FROM ' . self::TABLE . ' ORDER BY id DESC';
         $sth = $dbh->prepare($sql);
         $sth->execute();
         return $sth->fetchAll(PDO::FETCH_CLASS, self::class);
@@ -21,7 +23,7 @@ abstract class User
 
 
 
-    public function deleteById($id){
+    public function DeleteById($id){
         $this->id = $id;
         $dbh = new Connection();
         $sql = 'DELETE FROM ' . self::TABLE .' WHERE id='.$id;

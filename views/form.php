@@ -1,13 +1,5 @@
-<!--
-<form action="../controler/add.php" method="POST">
-    Имя новости: <input type="text" name="title_news">
-    Картинка: <input type="text" name="image">
-    Новость: <textarea name="text_news" style="width:300px;height:100px;"></textarea>
-    <input type="submit" value="Добавить новость" name="submit"/>
 
-</form>
 
--->
 <form class="form-horizontal" action="../controler/add.php" method="POST">
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-6 control-label">Заголовок</label>

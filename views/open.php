@@ -18,7 +18,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                 <h1 class="text-center">Введите логин и пароль:</h1>
             </div>
             <div class="modal-body">
@@ -32,13 +32,13 @@
                     <div class="form-group">
                         <button class="btn btn-primary btn-lg btn-block">Войти</button>
                         <span class="pull-right"> <br>
-	<a href="/../views/regist.php">Зарегистрироваться</a></span><span><a href="#">Need help?</a></span>
+	                    <a href="/../views/regist.php">Зарегистрироваться</a></span>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <div class="col-md-12">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+
                 </div>
             </div>
         </div>

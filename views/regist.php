@@ -20,7 +20,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                 <?php if(!empty($_SESSION['error'])):?>
                     <?php echo '<p style="text-align: center;">'.$_SESSION['error'].'</p>'?>
                     <?php unset($_SESSION['error']); ?>
@@ -44,7 +44,7 @@
             </div>
             <div class="modal-footer">
                 <div class="col-md-12">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+
                 </div>
             </div>
         </div>

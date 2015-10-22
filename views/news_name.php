@@ -3,26 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>new_news</title>
-
-    <?php require_once __DIR__.'/../classes/sql.php';?>
+    <?php require_once __DIR__.'/../autoload.php'; ?>
     <?php require_once __DIR__.'/../function.php';?>
 
 </head>
 <body>
-<?php $y = new Sql('localhost','root','','news');
+<?php include __DIR__.'/../views/header.php';?>
+<div class="container">
 
-$newses = $y->get_info('new_news');?>
-<?php foreach ($newses as $key => $value):?>
-    <?php if ($id == $value['id']):?>
-        <h2><?php echo $value['title'];?></h2>
-        <p><?php echo $value['text'];?></p>
-        <p><?php echo $value['date'];?></p>
+    <div class="row">
+        <!-- Button trigger modal -->
+
+        <div class="col-md-12">
+            <div style="padding-top:50px;">
+<?php $id = get_id(); ?>
+
+<?php $newses= News::findAll();?>
+<?php foreach ($newses as $key):?>
+    <?php if ($id == $key->id ):?>
+        <h2><?php echo $key->title;?></h2>
+        <p><?php echo $key->text;?></p>
+        <p><?php echo $key->date;?></p>
 
     <?php endif; ?>
 
 <?php endforeach; ?>
 
 <a href="/logon.php">назад</a>
+                </div>
+            </div>
+    </div>
+</div>
 </body>
 </html>
 

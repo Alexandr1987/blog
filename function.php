@@ -1,6 +1,6 @@
 <?php
+require_once __DIR__.'/autoload.php';
 
-require_once __DIR__.'/classes/sql.php';
  
 function logout()
 {
@@ -23,10 +23,10 @@ function getUser()
 
 function chekLoginPassword($login, $password){
 	
-	$b = new Sql('localhost','root','','news');
-	$users = $b->get_info('info');
+
+	$users = Login::findAll();
 	foreach ($users as $value){
-		if($value['login']==$login && $value['pasword']==$password){
+		if($value->login == $login && $value->pasword == $password){
 			return true;
 		}
 		
@@ -37,7 +37,7 @@ function chekLoginPassword($login, $password){
 
 
 //Загрузка файла
-function upload_file($uploaddir,$nazva)
+/*function upload_file($uploaddir,$nazva)
 {
 
     $newName = $uploaddir . basename($_FILES['image']['name']);
@@ -58,7 +58,7 @@ function upload_file($uploaddir,$nazva)
         return false;
     }
 }
-
+*/
 function upload_file_cabinet($uploaddir,$cook)
 {
 
@@ -71,10 +71,11 @@ function upload_file_cabinet($uploaddir,$cook)
         $files = basename($_FILES['image']['name']);
 
         if (in_array($img_name, $array) !== true) {
-            $result = mysql_query("UPDATE info SET img='$files' WHERE login='$cook'");
-            var_dump($result);
+            $loginses = new Login();
+            $result = $loginses->update($files,$cook);//mysql_query("UPDATE info SET img='$files' WHERE login='$cook'");
+            //var_dump($result);
         } else {
-            echo net;
+            echo 'Файл не загружен, попробуйте переименовать файл';
         }
     } else {
         return false;
@@ -93,7 +94,7 @@ function get_id()
     }
     return $id;
 }
-$id = get_id();
+
 
 
 

@@ -12,46 +12,48 @@
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link href="css/styles_blog.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 </head>
 <body>
-<header class="navbar navbar-default navbar-fixed-top" role="banner">
+<header class="navbar  navbar-default navbar-fixed-top navbar-inverse" role="banner">
     <div class="container">
         <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="../logon.php" class="navbar-brand">Home</a>
+
+            <a href="../logon.php" class="navbar-brand">Главная</a>
+
         </div>
         <nav class="collapse navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">Category</a>
+                    <a href="#"></a>
                 </li>
                 <li>
-                    <a href="#">Category</a>
+                    <a href="#"></a>
                 </li>
                 <li>
-                    <a href="#">Category</a>
+                    <a href="#"></a>
                 </li>
                 <li>
-                    <a href="#">Category</a>
+                    <a href="#"></a>
                 </li>
+
             </ul>
+
             <ul class="nav navbar-right navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
-                    <ul class="dropdown-menu" style="padding:12px;">
-                        <form class="form-inline">
-                            <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
-                        </form>
-                    </ul>
+                <li >
+
+                    <a href="views/cabinet.php"><?php echo getUser(); ?> <span class=" glyphicon glyphicon-user" aria-hidden="true">
+
+                        </span></a>
                 </li>
+                <li> <a href="/logout.php">Выход</a></li>
             </ul>
 
         </nav>
-        <a href="views/cabinet.php">Cabinet</a>
+
+
     </div>
 </header>

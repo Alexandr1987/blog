@@ -6,7 +6,7 @@ class Login
     const TABLE = 'info';
 
 
-    public function Insert($log,$pas){
+    public function insert($log,$pas){
         $this->log = $log;
         $this->pas = $pas;
         $dbh = new Connection();
@@ -23,5 +23,16 @@ class Login
         $sth->execute();
         return $sth->fetchAll(PDO::FETCH_CLASS, self::class);
     }
+
+    public function update($files,$cook){
+        $this->files = $files;
+        $this->cook = $cook;
+        $dbh = new Connection();
+        $sql = "UPDATE info SET img='$files' WHERE login='$cook'";
+        $sth = $dbh->prepare($sql);
+        $sth->execute();
+
+    }
+
 
 }

@@ -1,6 +1,6 @@
 <?php
 require __DIR__."/function.php";
-
+require_once __DIR__.'/autoload.php';
 if (!isUser()){
 	header('Location: /index.php');
 	exit;
@@ -8,66 +8,78 @@ if (!isUser()){
 
 ?>
 <?php include __DIR__.'/views/header.php';?>
-<div id="masthead">  
-  <div class="container">
-    <div class="row">
-      <div class="col-md-7">
-        <h1>Привет, <?php echo getUser(); ?>
-          <p class="lead"></p>
-        </h1>
-      </div>
-      <div class="col-md-5">
-        <div class="well well-lg"> 
-          <div class="row">
-            <div class="col-sm-12">
-              <?php
 
-              include_once __DIR__ . '/views/form.php';
-              ?>
-            </div>
+
+<div class="container">
+
+  <div class="row">
+    <!-- Button trigger modal -->
+
+    <div class="col-md-12">
+
+      <div class="text-center" style="position:fixed;left:90%;top:50px;"><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Добавить новость</button></div>
+      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content text-center" style="padding: 30px;">
+            <form class="form-horizontal" action="/controler/add.php" method="POST">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-10 col-sm-offset-1 col-sm-10">Заголовок</label>
+                <div class="col-sm-10 col-sm-offset-1 col-sm-10 text-center">
+                  <input type="text" name="title_news" class="form-control " >
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-10 col-sm-offset-1 col-sm-10">Текст</label>
+                <div class="col-sm-offset-1 col-sm-10 text-center">
+                  <textarea  class="form-control" rows="6" name="text_news"></textarea>
+
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-1 col-sm-10">
+                  <button type="submit" class="btn btn-default" name="submit">Добавить</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </div> 
-  </div><!-- /cont -->
-  
- 
-</div>
-
-<div class="container">
-  <div class="row">
-    
-    <div class="col-md-12"> 
       <div class="panel">
         <div class="panel-body">
           <!--/stories-->
-		  <?php $g = new Sql('localhost','root','','news');?>
-		  <?php $newses = $g->get_info_news('new_news');?>
-	    	<?php foreach ($newses as $key => $news):?>
-		      <?php $id = $news["id"];?>
-              <?php $news_avtor = $news["avtor"];?>
-              <?php  $avtors = $g->get_info('info');?>
-                <?php foreach ($avtors as $rey => $ava):?>
-                  <?php $login_name = $ava['login'];?>
-                  <?php if($news_avtor == $login_name){
-                  $img_src = $ava['img'];}?>
 
-                <?php endforeach;?>
+		  <?php $newses = News::findAll();?>
+
+          <?php foreach ($newses as $key): ?>
+            <?php $news_avtor = $key->avtor; ?>
+            <?php  $id = $key->id?>
+            <?php $avtors = Login::findAll(); ?>
+
+            <?php foreach ($avtors as $rey): ?>
+              <?php $login_name = $rey->login; ?>
+
+              <?php if ($news_avtor == $login_name): ?>
+                <?php $img_src = $rey->img; ?>
+
+              <?php endif; ?>
+            <?php endforeach; ?>
 
 		  <div class="row">    
             <br>
             <div class="col-md-2 col-sm-3 text-center" >
               <a class="story-img" href="#"><img src="img/<?php echo $img_src ?>" style="width:100px;height:100px" class="img-circle"></a>
+              <?php echo $news_avtor;?>
             </div>
-            <p><?php echo $news["id"];?></p>
+            <p><?php echo $id;?></p>
             <div class="col-md-10 col-sm-9" style="border:1px solid #ccc;">
-              <h3><?php echo $news["title"]; ?></h3>
+              <h3><?php echo $key->title; ?></h3>
               <div class="row">
                 <div class="col-xs-9" >
-                  <p style="height:100px;text-overflow: ellipsis;overflow:hidden;"><?php echo $news["text"];?></p>
+                  <p style="height:100px;text-overflow: ellipsis;overflow:hidden;"><?php echo $key->text;?></p>
                   <p class="lead"><button class="btn btn-primary" ><a href="/views/news_name.php?id=<?=$id ?>" style="color:#fff;">Подробнее...</a></button></p>
-                  <p class="pull-right"><span class="label label-default">keyword</span> <span class="label label-default">tag</span> <span class="label label-default">post</span></p>
-                  <ul class="list-inline"><li><a href="#"><?php echo $news["date"];?></a></li><li><a href="#"><i class="glyphicon glyphicon-comment"></i> 4 Comments</li><li><i class="glyphicon glyphicon-share"></i> 34 Shares</a></li></ul>
+                  <p class="pull-right"><span class="label label-default"></span> <span class="label label-default"></span> <span class="label label-default"></span></p>
+                  <ul class="list-inline"><li><a href="#"><?php echo $key->date;?></a></li><li><a href="#"><i class="glyphicon glyphicon-comment"></i></li><li><i class="glyphicon glyphicon-share"></i></a></li></ul>
                   </div>
                 <div class="col-xs-3"></div>
               </div>
@@ -110,6 +122,11 @@ if (!isUser()){
 <br>
 
 <br>
-<a href="/logout.php">Выход</a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 
 <?php
-require_once __DIR__."/../classes/sql.php";
+require_once __DIR__.'/../autoload.php';
+
 require __DIR__."/../function.php";
 
 if (!isUser()){
@@ -25,47 +26,7 @@ if (!isUser()){
     <link href="../css/styles_blog.css" rel="stylesheet">
 </head>
 <body>
-<header class="navbar navbar-default navbar-fixed-top" role="banner">
-    <div class="container">
-        <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="/logon.php" class="navbar-brand">Home</a>
-        </div>
-        <nav class="collapse navbar-collapse" role="navigation">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#">Category</a>
-                </li>
-                <li>
-                    <a href="#">Category</a>
-                </li>
-                <li>
-                    <a href="#">Category</a>
-                </li>
-                <li>
-                    <a href="#">Category</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-right navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
-                    <ul class="dropdown-menu" style="padding:12px;">
-                        <form class="form-inline">
-                            <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
-                        </form>
-                    </ul>
-                </li>
-            </ul>
-
-        </nav>
-        <a href="#">Cabinet</a>
-    </div>
-</header>
+<?php include __DIR__.'/../views/header.php';?>
 <div id="masthead">
     <div class="container">
         <div class="row">
@@ -94,22 +55,22 @@ if (!isUser()){
     <!-- Поле MAX_FILE_SIZE должно быть указано до поля загрузки файла -->
 
     <!-- Название элемента input определяет имя в массиве $_FILES -->
-    Имя файла: <input type="text" name="foto_name">
+    <!--Имя файла: <input type="text" name="foto_name">-->
     Отправить этот файл: <input name="image" type="file" lable="file"/>
     <input type="submit" value="Добавить файл" name="submit"/>
 </form>
 
 <br><br>
 <?php
-$t = new Sql('localhost','root','','news');?>
-<?php $images = $t->get_info('info'); ?>
+//$avatars = new User;?>
+<?php $images = News::findAll(); ?>
 <?php
 // загрузка файла
-$uploaddir = __DIR__.'/../img/';
+$files = __DIR__.'/../img/';
 $nazva = $_POST['foto_name'];
 $cook=getUser();
 
-upload_file_cabinet($uploaddir ,$cook);
+upload_file_cabinet($files ,$cook);
 
 
 //показ картинок
@@ -143,14 +104,14 @@ upload_file_cabinet($uploaddir ,$cook);
     </div>
 </div>
 
-<?php $img = new Sql('localhost','root','','news');
+<?php
 $avt=getUser();
-$avtors= $img->get_info('info');
+$avtors= Login::findAll();
 foreach ($avtors as $key) {
-if($key['login']==$avt)
-$img_src = $key['img'];
+if($key->login==$avt)
+$img_src = $key->img;
 };
- $img_src;
+
 ?>
 
 
