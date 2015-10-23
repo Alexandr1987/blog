@@ -23,7 +23,7 @@ class News
 
 
 
-    public function DeleteById($id){
+    public function deleteById($id){
         $this->id = $id;
         $dbh = new Connection();
         $sql = 'DELETE FROM ' . self::TABLE .' WHERE id='.$id;

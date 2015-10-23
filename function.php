@@ -75,11 +75,12 @@ function upload_file_cabinet($uploaddir,$cook)
             $result = $loginses->update($files,$cook);//mysql_query("UPDATE info SET img='$files' WHERE login='$cook'");
             //var_dump($result);
         } else {
-            echo 'Файл не загружен, попробуйте переименовать файл';
+            return false;
         }
     } else {
         return false;
     }
+    return true;
 }
 
 

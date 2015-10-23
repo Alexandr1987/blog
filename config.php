@@ -2,7 +2,7 @@
 
 return [
     'driver' => 'mysql',
-    'host' => '127.0.0.1',
+    'host' => 'localhost',
     'dbname' => 'news',
     'user' => 'root',
     'password' => '',

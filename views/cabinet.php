@@ -1,4 +1,3 @@
-
 <?php
 require_once __DIR__.'/../autoload.php';
 
@@ -8,7 +7,7 @@ if (!isUser()){
     header('Location: /index.php');
     exit;
 }
-
+session_start();
 ?>
 <!doctype html>
 <html lang="ru">
@@ -34,97 +33,76 @@ if (!isUser()){
                 <h1>Привет, <?php echo getUser(); ?>
                     <p class="lead"></p>
                 </h1>
+                <ul>
+                <?php $avtnews = News::findAll();?>
+                <?php $i=0;//var_dump($avtnews);?>
+                <?php foreach ($avtnews as $key):?>
+                    <?php if ($key->avtor == getUser() ):?>
+
+
+                        <li><p style="width:80%;"><?php echo $key->title?><?php echo $key->date?></p>
+                            <a href="/controler/new_delete.php?id=<?=$key->id ?>">delete</a></li>
+
+                    <?php endif; ?>
+
+
+
+                <?endforeach;?>
+                </ul>
             </div>
             <div class="col-md-5">
-                <div class="well well-lg">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            Ad Space
-                        </div>
-                    </div>
+                <div class="well well-lg well-sm well-xs" >
+
+
+                            <?php
+                            $avt=getUser();
+                            $avtors= Login::findAll();
+                            foreach ($avtors as $key) {
+                                if($key->login==$avt)
+                                    $img_src = $key->img;
+                            };
+
+                            ?>
+
+                            <img src="../img/<?php echo $img_src;?>" style="max-width:405px;padding-bottom:5px;display:block;margin:0 auto;">
+
+                            <div class="">
+                                <div style="width:120px;margin:0 auto;">
+                                    <!-- Тип кодирования данных, enctype, ДОЛЖЕН БЫТЬ указан ИМЕННО так -->
+                                    <form class="form-inline" enctype="multipart/form-data" method="POST" action="../controler/addImg.php">
+                                        <!-- Поле MAX_FILE_SIZE должно быть указано до поля загрузки файла -->
+                                        <div class="form-group">
+                                            <div style=" overflow: hidden;   ">
+                                                <div  class="btn btn-default" style="width:120px;">Выбрать файл</div>
+                                                <input type="file" name="image" id="file" size="1" style="margin-top: -50px; margin-left:-410px; -moz-opacity: 0; filter: alpha(opacity=0); opacity: 0; font-size: 150px; height: 50px;">
+                                            </div>
+                                            <input  style="width:120px;margin-top: 5px;" type="submit" class="btn btn-default" value="Изменить фото" name="submit"/><br>
+                                        </div>
+
+
+                                    </form>
+
+                                </div>
+                                <p style="font-size:12px;text-align: center;"><?php echo $_SESSION['error'];?></p>
+                                <?php unset($_SESSION['error']); ?>
+
+                            </div>
+
+
+
                 </div>
             </div>
         </div>
-    </div><!-- /cont -->
+        <div class="row">
 
-
-</div>
-
-<!-- Тип кодирования данных, enctype, ДОЛЖЕН БЫТЬ указан ИМЕННО так -->
-<form enctype="multipart/form-data" method="POST" action="<?= $_SERVER['PHP_SELF'] ?>">
-    <!-- Поле MAX_FILE_SIZE должно быть указано до поля загрузки файла -->
-
-    <!-- Название элемента input определяет имя в массиве $_FILES -->
-    <!--Имя файла: <input type="text" name="foto_name">-->
-    Отправить этот файл: <input name="image" type="file" lable="file"/>
-    <input type="submit" value="Добавить файл" name="submit"/>
-</form>
-
-<br><br>
-<?php
-//$avatars = new User;?>
-<?php $images = News::findAll(); ?>
-<?php
-// загрузка файла
-$files = __DIR__.'/../img/';
-$nazva = $_POST['foto_name'];
-$cook=getUser();
-
-upload_file_cabinet($files ,$cook);
-
-
-//показ картинок
-//* FROM images');
-
-
-?>
-<div class="container">
-    <div class="row">
-
-        <div class="col-md-12">
-            <div class="panel">
-                <div class="panel-body">
-                    <!--/stories
-
-                        -->
-                        <div class="row">
+        </div>
 
 
 
-                        </div>
 
-                    <hr>
-                    <hr>
-                    <!--/stories
-                    <a href="/" class="btn btn-primary pull-right btnNext">More <i class="glyphicon glyphicon-chevron-right"></i></a>
-                    -->
-                </div>
-            </div>
-        </div><!--/col-12-->
     </div>
 </div>
 
-<?php
-$avt=getUser();
-$avtors= Login::findAll();
-foreach ($avtors as $key) {
-if($key->login==$avt)
-$img_src = $key->img;
-};
 
-?>
-
-
-    <p style="width:150px;text-align:center;"><?php echo $avt;?>
-        <img src="../img/<?php echo $img_src;?>" width="150px">
-    </p>
-
-
-
-
-<br>
-
-<br>
-<a href="/logout.php">Выход</a>
 </body>
 </html>
