@@ -51,13 +51,14 @@ class News
 
     }
 
-    public function insert($name,$text,$avtor,$img_src=''){
+    public function insert($name,$text,$avtor,$ispoln='',$img_src=''){
+        $this->ispoln = $ispoln;
         $this->name = $name;
         $this->text = $text;
         $this->avtor = $avtor;
         $this->img_src = $img_src;
         $dbh = new Connection();
-        $sql = "INSERT INTO new_news(title, text, avtor, img, date) VALUES ('" . $name . "','" . $text . "','" . $avtor . "','" . $img_src . "',NOW())";
+        $sql = "INSERT INTO new_news(title, text, avtor, img, ispoln, date) VALUES ('" . $name . "','" . $text . "','" . $avtor . "','" . $img_src . "','" . $ispoln . "',NOW())";
         $sth = $dbh->prepare($sql);
         $sth->execute();
 

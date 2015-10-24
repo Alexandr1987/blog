@@ -12,7 +12,7 @@ if(empty($_POST['title_news']) || empty($_POST['text_news']))
 
 $name = $_POST['title_news'];
 $text = $_POST['text_news'];
-$img = $_POST['image'];
+$ispoln = $_POST['ispolnitel'];
 $date = date("F j, Y, g:i a");
 $avtor=getUser();
 $img = new Login;
@@ -26,7 +26,7 @@ $img = new Login;
 
 
 $b = new News;
-$b->insert($name,$text,$avtor);
+$b->insert($name,$text,$avtor,$ispoln);
 
 
 

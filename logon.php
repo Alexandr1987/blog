@@ -88,6 +88,17 @@ if (!isUser()){
                 </div>
               </div>
               <div class="form-group">
+                <label for="inputEmail3" class="col-sm-10 col-sm-offset-1 col-sm-10">Исполнитель</label>
+                <div class="col-sm-10 col-sm-offset-1 col-sm-10 text-center">
+                  <select class="form-control" name="ispolnitel">
+                    <?php $logins = Login::findAll();?>
+                      <?php foreach($logins as $isp):?>
+                    <option ><?php echo $isp->login ?></option>
+                    <?endforeach;?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
                 <label for="inputPassword3" class="col-sm-10 col-sm-offset-1 col-sm-10">Текст</label>
                 <div class="col-sm-offset-1 col-sm-10 text-center">
                   <textarea  class="form-control" rows="6" name="text_news"></textarea>
@@ -141,7 +152,7 @@ if (!isUser()){
                     <p style="height:100px;text-overflow: ellipsis;overflow:hidden;"><?php echo $key->text;?></p>
                     <p class="lead"><a href="/views/news_name.php?id=<?=$id ?>" style="color:#fff;"><button class="btn btn-primary" >Подробнее...</button></a></p>
                     <p class="pull-right"><span class="label label-default"></span> <span class="label label-default"></span> <span class="label label-default"></span></p>
-                    <ul class="list-inline"><li><a href="#"><?php echo $key->date;?></a></li><li><a href="#"><i class="glyphicon glyphicon-comment"></i></li><li><i class="glyphicon glyphicon-share"></i></a></li></ul>
+                    <ul class="list-inline"><li><a href="#"><?php echo $key->date;?></a></li><li><a href="#"><?php echo $key->ispoln;?></li><li><i class="glyphicon glyphicon-share"></i></a></li></ul>
                   </div>
                   <div class="col-xs-3"></div>
                 </div>

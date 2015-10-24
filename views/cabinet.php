@@ -37,20 +37,36 @@ session_start();
                 <?php $avtnews = News::findAll();?>
 
                 <?php foreach ($avtnews as $key):?>
+
                     <?php if ($key->avtor == getUser() ):?>
 
-
-                        <li><p style="width:80%;"><?php echo $key->title?><?php echo $key->date?></p>
-                            <a href="/controler/new_delete.php?id=<?=$key->id ?>"><button type="button" class="btn btn-primary"  >Удалить</button></a><br>
-
+                       <?php $coments = Coments::findAll();?>
+                        <li><a href="/views/news_name.php?id=<?=$key->id ?>" style="color:#000;"><?php echo $key->title?><?php echo $key->date?></a>
+                        <a href="/controler/new_delete.php?id=<?=$key->id ?>"><button type="button" class="btn btn-primary"  >Удалить</button></a>
+                        <?php foreach($coments as $rey):?>
+                            <?php if($rey->id_news == $key->id):?>
+                                <?php echo $rey->text;?>
+                            <?php endif; ?>
                         </li>
-
+                        <?php endforeach;?>
                     <?php endif; ?>
 
 
 
                 <?endforeach;?>
                 </ul>
+
+                <ul>
+                    <?php foreach ($avtnews as $key):?>
+
+                    <?php if ($key->ispoln == getUser() ):?>
+                    <li><a href="/views/news_name.php?id=<?=$key->id ?>"><?php echo $key->title?><button type="button" class="btn btn-danger"  >Надо сделать!</button></a></li>
+                        <?php endif; ?>
+
+                    <?endforeach;?>
+
+                </ul>
+
             </div>
             <div class="col-md-5">
                 <div class="well well-lg well-sm well-xs" >
