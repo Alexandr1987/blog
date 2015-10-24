@@ -35,13 +35,15 @@ session_start();
                 </h1>
                 <ul>
                 <?php $avtnews = News::findAll();?>
-                <?php $i=0;//var_dump($avtnews);?>
+
                 <?php foreach ($avtnews as $key):?>
                     <?php if ($key->avtor == getUser() ):?>
 
 
                         <li><p style="width:80%;"><?php echo $key->title?><?php echo $key->date?></p>
-                            <a href="/controler/new_delete.php?id=<?=$key->id ?>">delete</a></li>
+                            <a href="/controler/new_delete.php?id=<?=$key->id ?>"><button type="button" class="btn btn-primary"  >Удалить</button></a><br>
+
+                        </li>
 
                     <?php endif; ?>
 
@@ -94,7 +96,10 @@ session_start();
             </div>
         </div>
         <div class="row">
+            <div class="col-md-12">
 
+
+            </div>
         </div>
 
 
@@ -102,7 +107,11 @@ session_start();
 
     </div>
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
 </body>
 </html>

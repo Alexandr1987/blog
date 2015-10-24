@@ -45,7 +45,7 @@
             <ul class="nav navbar-right navbar-nav">
                 <li >
 
-                    <a href="views/cabinet.php"><?php echo getUser(); ?> <span class=" glyphicon glyphicon-user" aria-hidden="true">
+                    <a href="cabinet.php"><?php echo getUser(); ?> <span class=" glyphicon glyphicon-user" aria-hidden="true">
 
                         </span></a>
                 </li>

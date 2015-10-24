@@ -1,16 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Александр
- * Date: 22.10.2015
- * Time: 21:59
- */
-
-require_once __DIR__.'/../autoload.php';
-class News
+class Coments
     extends User
 {
-    const TABLE = 'new_news';
+    const TABLE = 'coments';
 
 
     public static function findAll(){
@@ -32,32 +24,32 @@ class News
 
     }
 
-    public function updateById($text,$id){
+    public function updateTextById($text,$id){
         $this->id = $id;
         $dbh = new Connection();
-        $sql = "UPDATE new_news SET text='$text' WHERE id='$id'";
+        $sql = "UPDATE coments SET text='$text' WHERE id='$id'";
         $sth = $dbh->prepare($sql);
         $sth->execute();
 
     }
 
-    public function update($title,$id){
+    public function updateTitleById($title,$id){
         $this->id = $id;
         $this->title = $title;
         $dbh = new Connection();
-        $sql = "UPDATE new_news SET title='$title' WHERE id='$id'";
+        $sql = "UPDATE coments SET title='$title' WHERE id='$id'";
         $sth = $dbh->prepare($sql);
         $sth->execute();
 
     }
 
-    public function insert($name,$text,$avtor,$img_src=''){
-        $this->name = $name;
+    public function insert($text,$avtor,$id_news){
+
         $this->text = $text;
         $this->avtor = $avtor;
-        $this->img_src = $img_src;
+        $this->id_news = $id_news;
         $dbh = new Connection();
-        $sql = "INSERT INTO new_news(title, text, avtor, img, date) VALUES ('" . $name . "','" . $text . "','" . $avtor . "','" . $img_src . "',NOW())";
+        $sql = "INSERT INTO coments (text, avtor, id_news, date)VALUE ('" . $text . "','" . $avtor . "','" . $id_news . "',NOW())";
         $sth = $dbh->prepare($sql);
         $sth->execute();
 
