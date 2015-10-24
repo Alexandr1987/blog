@@ -5,6 +5,9 @@ require_once __DIR__.'/../autoload.php';
 
 
 //$name = $_POST['title_news'];
+if(empty($_POST['text_news'])){
+
+}
 $text = $_POST['text_news'];
 
 $news = News::findAll();

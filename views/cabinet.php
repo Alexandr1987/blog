@@ -86,7 +86,7 @@ session_start();
 
                                 </div>
                                 <p style="font-size:12px;text-align: center;"><?php echo $_SESSION['error'];?></p>
-                                <?php unset($_SESSION['error']); ?>
+                                                <?php unset($_SESSION['error']); ?>
 
                             </div>
 

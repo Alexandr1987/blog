@@ -1,6 +1,7 @@
 <?php
 require __DIR__."/function.php";
 require_once __DIR__.'/autoload.php';
+session_start();
 if (!isUser()){
   header('Location: /index.php');
   exit;
@@ -78,6 +79,7 @@ if (!isUser()){
       <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg">
           <div class="modal-content text-center" style="padding: 30px;">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <form class="form-horizontal" action="/controler/add.php" method="POST">
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-10 col-sm-offset-1 col-sm-10">Заголовок</label>
@@ -105,7 +107,10 @@ if (!isUser()){
       <div class="panel">
         <div class="panel-body">
           <!--/stories-->
-
+          <?php if(!empty($_SESSION['error'])):?>
+            <?php echo '<p style="text-align: center;">'.$_SESSION['error'].'</p>'?>
+            <?php unset($_SESSION['error']); ?>
+          <?php endif;?>
           <?php $newses = News::findAll();?>
 
           <?php foreach ($newses as $key): ?>
@@ -134,7 +139,7 @@ if (!isUser()){
                 <div class="row">
                   <div class="col-xs-9" >
                     <p style="height:100px;text-overflow: ellipsis;overflow:hidden;"><?php echo $key->text;?></p>
-                    <p class="lead"><button class="btn btn-primary" ><a href="/views/news_name.php?id=<?=$id ?>" style="color:#fff;">Подробнее...</a></button></p>
+                    <p class="lead"><a href="/views/news_name.php?id=<?=$id ?>" style="color:#fff;"><button class="btn btn-primary" >Подробнее...</button></a></p>
                     <p class="pull-right"><span class="label label-default"></span> <span class="label label-default"></span> <span class="label label-default"></span></p>
                     <ul class="list-inline"><li><a href="#"><?php echo $key->date;?></a></li><li><a href="#"><i class="glyphicon glyphicon-comment"></i></li><li><i class="glyphicon glyphicon-share"></i></a></li></ul>
                   </div>

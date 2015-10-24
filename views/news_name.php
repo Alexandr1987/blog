@@ -25,7 +25,7 @@
                     <?php foreach($coments as $rey):?>
                         <?php if($key->id == $rey->id_news):?>
 
-                            <?php echo $rey->text;?>
+                            <?php echo $rey->text;?><br>
                         <?php endif;?>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -44,7 +44,7 @@
                         <form class="form-horizontal" action="../controler/addcoments.php" method="POST">
                             <div class="form-group">
 
-                                <div class="col-sm-10 col-sm-offset-1 col-sm-10 text-center" >
+                                <div class="col-sm-10 col-sm-offset-1 col-sm-10 text-center" style="display:none;">
                                     <input type="text" name="id" class="form-control " value="<?php echo $id;?>">
                                 </div>
                             </div>
