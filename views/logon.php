@@ -1,76 +1,19 @@
 <?php
-require __DIR__."/function.php";
-require_once __DIR__.'/autoload.php';
+require __DIR__ . "/../function.php";
+require_once __DIR__ . '/../autoload.php';
 session_start();
 if (!isUser()){
-  header('Location: /index.php');
+  header('Location: ../index.php');
   exit;
 }
+
 ?>
-<!doctype html>
-<html lang="ru">
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta charset="utf-8">
-  <title>Мой Блог</title>
-  <meta name="generator" content="Bootply" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-  <!--[if lt IE 9]>
-  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-  <link href="css/styles_blog.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-</head>
-<body>
-<header class="navbar  navbar-default navbar-fixed-top navbar-inverse" role="banner">
-  <div class="container">
-    <div class="navbar-header">
-
-      <a href="../logon.php" class="navbar-brand">Главная</a>
-
-    </div>
-    <nav class="collapse navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="#"></a>
-        </li>
-        <li>
-          <a href="#"></a>
-        </li>
-        <li>
-          <a href="#"></a>
-        </li>
-        <li>
-          <a href="#"></a>
-        </li>
-
-      </ul>
-
-      <ul class="nav navbar-right navbar-nav">
-        <li >
-
-          <a href="views/cabinet.php"><?php echo getUser(); ?> <span class=" glyphicon glyphicon-user" aria-hidden="true">
-
-                        </span></a>
-        </li>
-        <li> <a href="/logout.php">Выход</a></li>
-      </ul>
-
-    </nav>
 
 
-  </div>
-</header>
-
-
+<?php require_once __DIR__ . '/header.php';?>
 <div class="container">
 
-  <div class="row">
+  <div class="row" style="margin-top:100px;">
     <!-- Button trigger modal -->
 
     <div class="col-md-12">
@@ -141,7 +84,7 @@ if (!isUser()){
             <div class="row">
               <br>
               <div class="col-md-2 col-sm-3 text-center" >
-                <a class="story-img" href="#"><img src="img/<?php echo $img_src ?>" style="width:100px;height:100px" class="img-circle"></a>
+                <a class="story-img" href="#"><img src="../img/<?php echo $img_src ?>" style="width:100px;height:100px" class="img-circle"></a>
                 <?php echo $news_avtor;?>
               </div>
               <p><?php echo $id;?></p>
@@ -150,7 +93,7 @@ if (!isUser()){
                 <div class="row">
                   <div class="col-xs-9" >
                     <p style="height:100px;text-overflow: ellipsis;overflow:hidden;"><?php echo $key->text;?></p>
-                    <p class="lead"><a href="/views/news_name.php?id=<?=$id ?>" style="color:#fff;"><button class="btn btn-primary" >Подробнее...</button></a></p>
+                    <p class="lead"><a href="news_name.php?id=<?=$id ?>" style="color:#fff;"><button class="btn btn-primary" >Подробнее...</button></a></p>
                     <p class="pull-right"><span class="label label-default"></span> <span class="label label-default"></span> <span class="label label-default"></span></p>
                     <ul class="list-inline"><li><a href="#"><?php echo $key->date;?></a></li><li><a href="#"><?php echo $key->ispoln;?></li><li><i class="glyphicon glyphicon-share"></i></a></li></ul>
                   </div>
@@ -182,9 +125,7 @@ if (!isUser()){
           </div>
           <hr>
           <hr>
-          <!--/stories
-          <a href="/" class="btn btn-primary pull-right btnNext">More <i class="glyphicon glyphicon-chevron-right"></i></a>
-		  -->
+
         </div>
       </div>
     </div><!--/col-12-->

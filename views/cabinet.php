@@ -33,7 +33,7 @@ session_start();
                 <h1>Привет, <?php echo getUser(); ?>
                     <p class="lead"></p>
                 </h1>
-                <ul>
+                <ol>
                 <?php $avtnews = News::findAll();?>
 
                 <?php foreach ($avtnews as $key):?>
@@ -41,31 +41,33 @@ session_start();
                     <?php if ($key->avtor == getUser() ):?>
 
                        <?php $coments = Coments::findAll();?>
-                        <li><a href="/views/news_name.php?id=<?=$key->id ?>" style="color:#000;"><?php echo $key->title?><?php echo $key->date?></a>
+                        <li><a href="/views/news_name.php?id=<?=$key->id ?>" style="color:#000;display:block;width:150px;"><?php echo $key->title?><?php echo $key->date?></a>
+                        <button type="button" class="btn btn-success">На исполнении</button>
                         <a href="/controler/new_delete.php?id=<?=$key->id ?>"><button type="button" class="btn btn-primary"  >Удалить</button></a>
                         <?php foreach($coments as $rey):?>
                             <?php if($rey->id_news == $key->id):?>
-                                <?php echo $rey->text;?>
+                                <span><?php echo $rey->text;?></span>
                             <?php endif; ?>
-                        </li>
+
                         <?php endforeach;?>
+                        </li>
                     <?php endif; ?>
 
 
 
                 <?endforeach;?>
-                </ul>
+                </ol>
 
-                <ul>
+                <ol>
                     <?php foreach ($avtnews as $key):?>
 
                     <?php if ($key->ispoln == getUser() ):?>
-                    <li><a href="/views/news_name.php?id=<?=$key->id ?>"><?php echo $key->title?><button type="button" class="btn btn-danger"  >Надо сделать!</button></a></li>
+                    <li><a href="/views/news_name.php?id=<?=$key->id ?>" style="color:#000;display:block;width:150px;"><?php echo $key->title?></a><button type="button" class="btn btn-danger"  >Надо сделать!</button></li>
                         <?php endif; ?>
 
                     <?endforeach;?>
 
-                </ul>
+                </ol>
 
             </div>
             <div class="col-md-5">

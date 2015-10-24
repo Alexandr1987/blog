@@ -17,4 +17,4 @@ $coments = new Coments();
 $coments->insert($text,$avtor,$id_news);
 
 
-header('location: /logon.php');
+header('location: /../views/logon.php');

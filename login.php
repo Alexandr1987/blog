@@ -16,5 +16,5 @@ if(empty($_POST['login']) || empty($_POST['pas'])){
 
 
 
-header('Location: /logon.php');
+header('Location: /views/logon.php');
 exit;

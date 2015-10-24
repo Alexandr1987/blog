@@ -96,7 +96,12 @@ function get_id()
     return $id;
 }
 
+//Добавление исполнителей в форму
+// $logins = Login::findAll();
 
-
+//Достаем новости
+//$newses = News::findAll();
+//Достаем автора статьи
+//$avtors = Login::findAll();
 
 ?>

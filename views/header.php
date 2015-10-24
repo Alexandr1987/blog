@@ -22,7 +22,7 @@
     <div class="container">
         <div class="navbar-header">
 
-            <a href="../logon.php" class="navbar-brand">Главная</a>
+            <a href="../views/logon.php" class="navbar-brand">Главная</a>
 
         </div>
         <nav class="collapse navbar-collapse" role="navigation">
