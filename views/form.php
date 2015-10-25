@@ -11,10 +11,8 @@
         <label for="inputPassword3" class="col-sm-6 control-label">Текст</label>
         <div class="col-sm-6">
             <textarea  class="form-control" rows="3" name="text_news"></textarea>
-
         </div>
     </div>
-
     <div class="form-group">
         <div class="col-sm-offset-6 col-sm-6">
             <button type="submit" class="btn btn-default" name="submit">Добавить</button>

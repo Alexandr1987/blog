@@ -13,17 +13,17 @@
     <![endif]-->
     <link href="css/styles_blog.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <?php require_once __DIR__.'/../autoload.php';?>
 
+    <?php require_once __DIR__."/../function.php";?>
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 </head>
 <body>
-<header class="navbar  navbar-default navbar-fixed-top navbar-inverse" role="banner">
+<header class="navbar  navbar-default navbar-fixed-top navbar-inverse" role="banner" style="margin-bottom:100px;">
     <div class="container">
         <div class="navbar-header">
-
             <a href="../views/logon.php" class="navbar-brand">Главная</a>
-
         </div>
         <nav class="collapse navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
@@ -44,16 +44,23 @@
 
             <ul class="nav navbar-right navbar-nav">
                 <li >
+                    <a href="cabinet.php"><?php echo getUser(); ?>
+                        <?php $col = News::findAll();?>
+                        <?php $i = 0;?>
+                        <?php foreach($col as $val):?>
 
-                    <a href="cabinet.php"><?php echo getUser(); ?> <span class=" glyphicon glyphicon-user" aria-hidden="true">
+                            <?php if($val->ispoln == getUser()):?>
+                                <?php $i++?>
+                            <?php endif;?>
 
-                        </span></a>
+                        <?endforeach;?>
+
+                        <span class=" glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <span style="color:red;"><?php echo $i;?></span>
+                    </a>
                 </li>
                 <li> <a href="/logout.php">Выход</a></li>
             </ul>
-
         </nav>
-
-
     </div>
 </header>

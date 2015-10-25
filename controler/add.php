@@ -30,5 +30,5 @@ $b->insert($name,$text,$avtor,$ispoln);
 
 
 
-//$b->insert("INSERT INTO new_news(img) VALUE ('" . $name . "')");
-header('location: /../logon.php');
+
+header('location: /../views/logon.php');

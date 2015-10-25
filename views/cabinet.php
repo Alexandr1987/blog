@@ -9,25 +9,11 @@ if (!isUser()){
 }
 session_start();
 ?>
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <title>Мой Блог</title>
-    <meta name="generator" content="Bootply" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link href="../css/styles_blog.css" rel="stylesheet">
-</head>
-<body>
+
+
 <?php include __DIR__.'/../views/header.php';?>
 <div id="masthead">
-    <div class="container">
+    <div class="container" style="margin-top:100px;">
         <div class="row">
             <div class="col-md-7">
                 <h1>Привет, <?php echo getUser(); ?>
@@ -41,19 +27,20 @@ session_start();
                     <?php if ($key->avtor == getUser() ):?>
 
                        <?php $coments = Coments::findAll();?>
-                        <li><a href="/views/news_name.php?id=<?=$key->id ?>" style="color:#000;display:block;width:150px;"><?php echo $key->title?><?php echo $key->date?></a>
-                        <button type="button" class="btn btn-success">На исполнении</button>
-                        <a href="/controler/new_delete.php?id=<?=$key->id ?>"><button type="button" class="btn btn-primary"  >Удалить</button></a>
-                        <?php foreach($coments as $rey):?>
-                            <?php if($rey->id_news == $key->id):?>
-                                <span><?php echo $rey->text;?></span>
-                            <?php endif; ?>
+                        <li>
+                            <a href="/views/news_name.php?id=<?=$key->id ?>" style="color:#000;display:block;width:150px;"><?php echo $key->title?><?php echo $key->date?></a>
+                            <button type="button" class="btn btn-success">На исполнении</button>
+                            <a href="/controler/new_delete.php?id=<?=$key->id ?>">
+                                <button type="button" class="btn btn-primary"  >Удалить</button>
+                            </a>
+                            <?php foreach($coments as $rey):?>
+                                <?php if($rey->id_news == $key->id):?>
+                                    <span><?php echo $rey->text;?></span>
+                                <?php endif; ?>
 
-                        <?php endforeach;?>
+                            <?php endforeach;?>
                         </li>
                     <?php endif; ?>
-
-
 
                 <?endforeach;?>
                 </ol>
@@ -72,56 +59,45 @@ session_start();
             </div>
             <div class="col-md-5">
                 <div class="well well-lg well-sm well-xs" >
-
-
-                            <?php
-                            $avt=getUser();
-                            $avtors= Login::findAll();
-                            foreach ($avtors as $key) {
-                                if($key->login==$avt)
-                                    $img_src = $key->img;
+                    <?php
+                    $avt=getUser();
+                    $avtors= Login::findAll();
+                    foreach ($avtors as $key) {
+                        if($key->login==$avt)
+                            $img_src = $key->img;
                             };
 
-                            ?>
+                    ?>
 
-                            <img src="../img/<?php echo $img_src;?>" style="max-width:405px;padding-bottom:5px;display:block;margin:0 auto;">
+                    <img src="../img/<?php echo $img_src;?>" style="max-width:405px;padding-bottom:5px;display:block;margin:0 auto;">
 
-                            <div class="">
-                                <div style="width:120px;margin:0 auto;">
-                                    <!-- Тип кодирования данных, enctype, ДОЛЖЕН БЫТЬ указан ИМЕННО так -->
-                                    <form class="form-inline" enctype="multipart/form-data" method="POST" action="../controler/addImg.php">
-                                        <!-- Поле MAX_FILE_SIZE должно быть указано до поля загрузки файла -->
-                                        <div class="form-group">
-                                            <div style=" overflow: hidden;   ">
-                                                <div  class="btn btn-default" style="width:120px;">Выбрать файл</div>
-                                                <input type="file" name="image" id="file" size="1" style="margin-top: -50px; margin-left:-410px; -moz-opacity: 0; filter: alpha(opacity=0); opacity: 0; font-size: 150px; height: 50px;">
-                                            </div>
-                                            <input  style="width:120px;margin-top: 5px;" type="submit" class="btn btn-default" value="Изменить фото" name="submit"/><br>
-                                        </div>
-
-
-                                    </form>
-
+                    <div class="">
+                        <div style="width:120px;margin:0 auto;">
+                            <!-- Тип кодирования данных, enctype, ДОЛЖЕН БЫТЬ указан ИМЕННО так -->
+                            <form class="form-inline" enctype="multipart/form-data" method="POST" action="../controler/addImg.php">
+                                <!-- Поле MAX_FILE_SIZE должно быть указано до поля загрузки файла -->
+                                <div class="form-group">
+                                    <div style=" overflow: hidden;   ">
+                                        <div  class="btn btn-default" style="width:120px;">Выбрать файл</div>
+                                        <input type="file" name="image" id="file" size="1" style="margin-top: -50px; margin-left:-410px; -moz-opacity: 0; filter: alpha(opacity=0); opacity: 0; font-size: 150px; height: 50px;">
+                                    </div>
+                                    <input  style="width:120px;margin-top: 5px;" type="submit" class="btn btn-default" value="Изменить фото" name="submit"/><br>
                                 </div>
-                                <p style="font-size:12px;text-align: center;"><?php echo $_SESSION['error'];?></p>
-                                                <?php unset($_SESSION['error']); ?>
+                            </form>
 
-                            </div>
+                        </div>
+                        <p style="font-size:12px;text-align: center;"><?php echo $_SESSION['error'];?></p>
+                        <?php unset($_SESSION['error']); ?>
 
-
-
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
 
-
             </div>
         </div>
-
-
-
 
     </div>
 </div>

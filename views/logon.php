@@ -11,14 +11,14 @@ if (!isUser()){
 
 
 <?php require_once __DIR__ . '/header.php';?>
-<div class="container">
+<div class="container" style="margin-top:100px;">
 
-  <div class="row" style="margin-top:100px;">
+  <div class="row" >
     <!-- Button trigger modal -->
 
     <div class="col-md-12">
 
-      <div class="text-center" style="position:fixed;left:90%;top:50px;"><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Добавить новость</button></div>
+      <div class="text-center" style="position:fixed;left:90%;top:50px;"><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Добавить задачу</button></div>
       <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg">
           <div class="modal-content text-center" style="padding: 30px;">
@@ -84,7 +84,7 @@ if (!isUser()){
             <div class="row">
               <br>
               <div class="col-md-2 col-sm-3 text-center" >
-                <a class="story-img" href="#"><img src="../img/<?php echo $img_src ?>" style="width:100px;height:100px" class="img-circle"></a>
+                <a class="story-img" href="#"><img src="../img/<?php echo $img_src ?>" style="width:150px;height:150px;margin-top:40px;" class="img-circle"></a>
                 <?php echo $news_avtor;?>
               </div>
               <p><?php echo $id;?></p>
