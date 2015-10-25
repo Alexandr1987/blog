@@ -28,7 +28,7 @@ session_start();
 
                        <?php $coments = Coments::findAll();?>
                         <li>
-                            <a href="/views/news_name.php?id=<?=$key->id ?>" style="color:#000;display:block;width:150px;"><?php echo $key->title?><?php echo $key->date?></a>
+                            <a href="/views/news_name.php?id=<?=$key->id ?>" style="color:#000;display:block;width:250px;"><?php echo $key->title?> &nbsp;&nbsp;<?php echo $key->date?></a>
                             <button type="button" class="btn btn-success">На исполнении</button>
                             <a href="/controler/new_delete.php?id=<?=$key->id ?>">
                                 <button type="button" class="btn btn-primary"  >Удалить</button>

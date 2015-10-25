@@ -6,6 +6,7 @@
     <file url="file://$PROJECT_DIR$/controler/add.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controler/addcoments.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controler/registration.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/controler/remember.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/index.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/login.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/logout.php" charset="UTF-8" />
@@ -14,6 +15,7 @@
     <file url="file://$PROJECT_DIR$/views/news_name.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/views/open.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/views/regist.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/remember.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../../cms2/templates/ox2.php" charset="UTF-8" />
   </component>
 </project>

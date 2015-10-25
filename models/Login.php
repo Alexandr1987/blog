@@ -6,11 +6,12 @@ class Login
     const TABLE = 'info';
 
 
-    public function insert($log,$pas){
+    public function insert($log,$pas,$mail){
         $this->log = $log;
         $this->pas = $pas;
+        $this->mail = $mail;
         $dbh = new Connection();
-        $sql = "INSERT INTO info(login,pasword)VALUE ('" . $log . "','" . $pas . "')";
+        $sql = "INSERT INTO info(login,pasword,mail)VALUE ('" . $log . "','" . $pas . "','" . $mail . "')";
         $sth = $dbh->prepare($sql);
         $sth->execute();
 
