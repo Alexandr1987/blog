@@ -48,6 +48,7 @@
                     <?php echo '<p style="text-align: center;">'.$_SESSION['remember'].'</p>'?>
                     <?php unset($_SESSION['remember']); ?>
                 <?php endif;?>
+
                 <form class="form col-md-12 center-block" action="/login.php" method="POST">
                     <div class="form-group">
                         <input type="text" name="login" class="form-control input-lg" placeholder="Логин">

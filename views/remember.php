@@ -26,6 +26,10 @@
                 <h1 class="text-center">Регистрация</h1>
             </div>
             <div class="modal-body">
+                <?php if(!empty($_SESSION['notremember'])):?>
+                    <?php echo '<p style="text-align: center;">'.$_SESSION['notremember'].'</p>'?>
+                    <?php unset($_SESSION['notremember']); ?>
+                <?php endif;?>
                 <form class="form col-md-12 center-block" action="/controler/remember.php" method="POST"">
 
                 <div class="form-group">
