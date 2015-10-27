@@ -6,7 +6,7 @@
  * Time: 20:35
  */
 require_once __DIR__.'/../autoload.php';
-abstract class User
+abstract class Models
 {
     const TABLE = 'new_news';
 

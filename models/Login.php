@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__.'/../autoload.php';
 class Login
-    extends User{
+    extends Models{
 
     const TABLE = 'info';
 

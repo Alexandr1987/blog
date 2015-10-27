@@ -52,12 +52,13 @@ session_start();
                 </ol>
 
                 <ol>
-                    <!-- Выводим кнопки Надо сделать и ответственный-->
+                    <!-- Выводим кнопки Надо сделать-->
                     <?php foreach ($avtnews as $key):?>
 
                     <?php if ($key->ispoln == getUser() || $key->ispoln2 == getUser() || $key->ispoln3 == getUser() || $key->ispoln4 == getUser() || $key->ispoln5 == getUser()|| $key->otvets == getUser()):?>
                     <li><a href="/views/news_name.php?id=<?=$key->id ?>" style="color:#000;display:block;width:150px;"><?php echo $key->title?></a><button type="button" class="btn btn-danger"  >Надо сделать!</button>
                             <?php if($key->otvets == getUser()):?>
+                                <!-- Выводим кнопку ответственный-->
                                 <?php echo '<button type="button" class="btn btn btn-warning"  >Ответственный</button>'; ?>
                                 <?php foreach($coments as $rey):?>
                                     <?php if($rey->id_news == $key->id):?>

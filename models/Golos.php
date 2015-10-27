@@ -1,8 +1,9 @@
 <?php
-class Coments
+require_once __DIR__.'/../autoload.php';
+class Golos
     extends Models
 {
-    const TABLE = 'coments';
+    const TABLE = 'golos';
 
 
     public static function findAll(){
@@ -24,36 +25,39 @@ class Coments
 
     }
 
-    public function updateTextById($text,$id){
-        $this->id = $id;
+    public function updateById($id,$golos){
+        $this->golos = $golos;
         $dbh = new Connection();
-        $sql = "UPDATE coments SET text='$text' WHERE id='$id'";
+        $sql = "UPDATE golos SET golos='$golos' WHERE id='$id'";
         $sth = $dbh->prepare($sql);
         $sth->execute();
 
     }
 
-    public function updateTitleById($title,$id){
+    public function update($title,$id){
         $this->id = $id;
         $this->title = $title;
         $dbh = new Connection();
-        $sql = "UPDATE coments SET title='$title' WHERE id='$id'";
+        $sql = "UPDATE golos SET title='$title' WHERE id='$id'";
         $sth = $dbh->prepare($sql);
         $sth->execute();
 
     }
 
-    public function insert($text,$avtor,$id_news){
+    public function insert($name,$text,$avtor,$img_src=''){
 
-        $this->text = $text;
-        $this->avtor = $avtor;
-        $this->id_news = $id_news;
-        $dbh = new Connection();
-        $sql = "INSERT INTO coments (text, avtor, id_news, date)VALUE ('" . $text . "','" . $avtor . "','" . $id_news . "',NOW())";
-        $sth = $dbh->prepare($sql);
-        $sth->execute();
 
-    }
+    $this->name = $name;
+    $this->text = $text;
+    $this->avtor = $avtor;
+    $this->img_src = $img_src;
+    $dbh = new Connection();
+    $sql = "INSERT INTO golos (title, text, avtor, img, golos, date) VALUES ('" . $name . "','" . $text . "','" . $avtor . "','" . $img_src . "',NOW())";
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+
+}
+
 
 
 }

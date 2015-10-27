@@ -8,7 +8,7 @@
 
 require_once __DIR__.'/../autoload.php';
 class News
-    extends User
+    extends Models
 {
     const TABLE = 'new_news';
 
