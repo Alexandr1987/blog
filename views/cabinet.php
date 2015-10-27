@@ -19,14 +19,19 @@ session_start();
                 <h1>Привет, <?php echo getUser(); ?>
                     <p class="lead"></p>
                 </h1>
+
+
+                <!-- Выводим кнопки на исполнении, задача и удалить -->
                 <ol>
+
                 <?php $avtnews = News::findAll();?>
 
+                <?php $coments = Coments::findAll();?>
                 <?php foreach ($avtnews as $key):?>
 
                     <?php if ($key->avtor == getUser() ):?>
 
-                       <?php $coments = Coments::findAll();?>
+
                         <li>
                             <a href="/views/news_name.php?id=<?=$key->id ?>" style="color:#000;display:block;width:250px;"><?php echo $key->title?> &nbsp;&nbsp;<?php echo $key->date?></a>
                             <button type="button" class="btn btn-success">На исполнении</button>
@@ -36,6 +41,7 @@ session_start();
                             <?php foreach($coments as $rey):?>
                                 <?php if($rey->id_news == $key->id):?>
                                     <span><?php echo $rey->text;?></span>
+                                    <span><?php echo $rey->avtor;?></span>
                                 <?php endif; ?>
 
                             <?php endforeach;?>
@@ -46,10 +52,25 @@ session_start();
                 </ol>
 
                 <ol>
+                    <!-- Выводим кнопки Надо сделать и ответственный-->
                     <?php foreach ($avtnews as $key):?>
 
-                    <?php if ($key->ispoln == getUser() ):?>
-                    <li><a href="/views/news_name.php?id=<?=$key->id ?>" style="color:#000;display:block;width:150px;"><?php echo $key->title?></a><button type="button" class="btn btn-danger"  >Надо сделать!</button></li>
+                    <?php if ($key->ispoln == getUser() || $key->ispoln2 == getUser() || $key->ispoln3 == getUser() || $key->ispoln4 == getUser() || $key->ispoln5 == getUser()|| $key->otvets == getUser()):?>
+                    <li><a href="/views/news_name.php?id=<?=$key->id ?>" style="color:#000;display:block;width:150px;"><?php echo $key->title?></a><button type="button" class="btn btn-danger"  >Надо сделать!</button>
+                            <?php if($key->otvets == getUser()):?>
+                                <?php echo '<button type="button" class="btn btn btn-warning"  >Ответственный</button>'; ?>
+                                <?php foreach($coments as $rey):?>
+                                    <?php if($rey->id_news == $key->id):?>
+
+                                        <span><?php echo $rey->text;?></span>
+                                        <span><?php echo $rey->avtor;?></span>
+
+                                    <?php endif; ?>
+
+                                <?php endforeach;?>
+                            <?php endif; ?>
+
+                    </li>
                         <?php endif; ?>
 
                     <?endforeach;?>

@@ -25,24 +25,73 @@ if (!isUser()){
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <form class="form-horizontal" action="/controler/add.php" method="POST">
               <div class="form-group">
-                <label for="inputEmail3" class="col-sm-10 col-sm-offset-1 col-sm-10">Заголовок</label>
+                <label for="inputEmail3" class="col-sm-offset-1 col-sm-10">Заголовок</label>
                 <div class="col-sm-10 col-sm-offset-1 col-sm-10 text-center">
                   <input type="text" name="title_news" class="form-control " >
                 </div>
               </div>
               <div class="form-group">
-                <label for="inputEmail3" class="col-sm-10 col-sm-offset-1 col-sm-10">Исполнитель</label>
+                <label for="inputEmail3" class="col-sm-offset-1 col-sm-10">Ответственный</label>
                 <div class="col-sm-10 col-sm-offset-1 col-sm-10 text-center">
+                  <select class="form-control" name="otvets">
+                    <option ></option>
+                    <?php $logins = Login::findAll();?>
+                    <?php foreach($logins as $isp):?>
+                      <option ><?php echo $isp->login ?></option>
+                    <?endforeach;?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-10 col-sm-offset-1 col-sm-10">Исполнитель</label>
+                <div class="col-sm-2 col-sm-offset-1 text-center">
                   <select class="form-control" name="ispolnitel">
+                    <option ></option>
                     <?php $logins = Login::findAll();?>
                       <?php foreach($logins as $isp):?>
                     <option ><?php echo $isp->login ?></option>
                     <?endforeach;?>
                   </select>
                 </div>
+                <div class="col-sm-2  text-center">
+                  <select class="form-control" name="ispolnitel2">
+                    <option ></option>
+                    <?php $logins = Login::findAll();?>
+                    <?php foreach($logins as $isp):?>
+                      <option ><?php echo $isp->login ?></option>
+                    <?endforeach;?>
+                  </select>
+                </div>
+                <div class="col-sm-2  text-center">
+                  <select class="form-control" name="ispolnitel3">
+                    <option ></option>
+                    <?php $logins = Login::findAll();?>
+                    <?php foreach($logins as $isp):?>
+                      <option ><?php echo $isp->login ?></option>
+                    <?endforeach;?>
+                  </select>
+                </div>
+                <div class="col-sm-2 text-center">
+                  <select class="form-control" name="ispolnitel4">
+                    <option ></option>
+                    <?php $logins = Login::findAll();?>
+                    <?php foreach($logins as $isp):?>
+                      <option ><?php echo $isp->login ?></option>
+                    <?endforeach;?>
+                  </select>
+                </div>
+                <div class="col-sm-2 text-center">
+                  <select class="form-control" name="ispolnitel5">
+                    <option ></option>
+                    <?php $logins = Login::findAll();?>
+                    <?php foreach($logins as $isp):?>
+                      <option ><?php echo $isp->login ?></option>
+                    <?endforeach;?>
+                  </select>
+                </div>
               </div>
               <div class="form-group">
-                <label for="inputPassword3" class="col-sm-10 col-sm-offset-1 col-sm-10">Текст</label>
+                <label for="inputPassword3" class="col-sm-10 col-sm-offset-1">Текст</label>
                 <div class="col-sm-offset-1 col-sm-10 text-center">
                   <textarea  class="form-control" rows="6" name="text_news"></textarea>
 
@@ -50,7 +99,7 @@ if (!isUser()){
               </div>
 
               <div class="form-group">
-                <div class="col-sm-10 col-sm-offset-1 col-sm-10">
+                <div class="col-sm-offset-1 col-sm-10">
                   <button type="submit" class="btn btn-default" name="submit">Добавить</button>
                 </div>
               </div>

@@ -49,14 +49,15 @@
                         <?php $i = 0;?>
                         <?php foreach($col as $val):?>
 
-                            <?php if($val->ispoln == getUser()):?>
-                                <?php $i++?>
+                            <?php if($val->ispoln == getUser()|| $val->ispoln2 == getUser() || $val->ispoln3 == getUser()
+                            || $val->ispoln4 == getUser()|| $val->ispoln5 == getUser() || $val->otvets == getUser()): ?>
+                                <?php $i++;?>
                             <?php endif;?>
 
                         <?endforeach;?>
 
                         <span class=" glyphicon glyphicon-user" aria-hidden="true"></span>
-                        <span style="color:red;"><?php echo $i;?></span>
+                        <span style="color:red;"><?php if ($i>0){echo $i;};?></span>
                     </a>
                 </li>
                 <li> <a href="/logout.php">Выход</a></li>

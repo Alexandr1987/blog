@@ -51,14 +51,19 @@ class News
 
     }
 
-    public function insert($name,$text,$avtor,$ispoln='',$img_src=''){
+    public function insert($name,$text,$avtor,$ispoln='',$ispoln2='',$ispoln3='',$ispoln4='',$ispoln5='',$otvets='',$img_src=''){
         $this->ispoln = $ispoln;
+        $this->ispoln2 = $ispoln2;
+        $this->ispoln3 = $ispoln3;
+        $this->ispoln4 = $ispoln4;
+        $this->ispoln5 = $ispoln5;
+        $this->otvets = $otvets;
         $this->name = $name;
         $this->text = $text;
         $this->avtor = $avtor;
         $this->img_src = $img_src;
         $dbh = new Connection();
-        $sql = "INSERT INTO new_news(title, text, avtor, img, ispoln, date) VALUES ('" . $name . "','" . $text . "','" . $avtor . "','" . $img_src . "','" . $ispoln . "',NOW())";
+        $sql = "INSERT INTO new_news(title, text, avtor, img, ispoln, ispoln2, ispoln3, ispoln4, ispoln5, otvets, date) VALUES ('" . $name . "','" . $text . "','" . $avtor . "','" . $img_src . "','" . $ispoln . "','" . $ispoln2 . "','" . $ispoln3 . "','" . $ispoln4 . "','" . $ispoln5 . "','" . $otvets . "',NOW())";
         $sth = $dbh->prepare($sql);
         $sth->execute();
 
