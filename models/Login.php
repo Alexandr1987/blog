@@ -17,13 +17,7 @@ class Login
 
     }
 
-    public static function findAll(){
-        $dbh = new Connection();
-        $sql = 'SELECT * FROM ' . self::TABLE . '';
-        $sth = $dbh->prepare($sql);
-        $sth->execute();
-        return $sth->fetchAll(PDO::FETCH_CLASS, self::class);
-    }
+
 
     public function update($files,$cook){
         $this->files = $files;

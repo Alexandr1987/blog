@@ -83,7 +83,7 @@ require_once __DIR__ . '/../autoload.php';
                                             <li><a href="../controler/clickGolos.php?$i=1&id=<?=$id ?>"><i class="glyphicon glyphicon-thumbs-up"><?php echo $key->golos ?></i></a> &nbsp; &nbsp; &nbsp;<a href="#"></li>
                                             <li><a href=""><i class="glyphicon glyphicon-thumbs-down"></i></a></li>
                                         </ul>
-                                        <p class="lead"><a href="news_name.php?id=<?=$id ?>" style="color:#fff;"><button class="btn btn-primary" >Подробнее...</button></a></p>
+                                        <!--<p class="lead"><a href="news_name.php?id=<?=$id ?>" style="color:#fff;"><button class="btn btn-primary" >Подробнее...</button></a></p>-->
                                         <p class="pull-right"><span class="label label-default"></span> <span class="label label-default"></span> <span class="label label-default"></span></p>
 
                                     </div>

@@ -52,7 +52,7 @@ class Golos
     $this->avtor = $avtor;
     $this->img_src = $img_src;
     $dbh = new Connection();
-    $sql = "INSERT INTO golos (title, text, avtor, img, golos, date) VALUES ('" . $name . "','" . $text . "','" . $avtor . "','" . $img_src . "',NOW())";
+    $sql = "INSERT INTO golos (title, text, avtor, img, date) VALUES ('" . $name . "','" . $text . "','" . $avtor . "','" . $img_src . "',NOW())";
     $sth = $dbh->prepare($sql);
     $sth->execute();
 
