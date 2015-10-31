@@ -65,7 +65,7 @@ require_once __DIR__ . '/../autoload.php';
                     <?php foreach ($newses as $key): ?>
                         <?php $avtors = $key->avtor; ?>
                         <?php  $id = $key->id;?>
-                        <?php  $tex = $key->text;?>
+                        <?php  $text = $key->text;?>
 
 
 
@@ -80,7 +80,7 @@ require_once __DIR__ . '/../autoload.php';
                                     <div class="col-xs-12" >
                                         <p style="height:100px;text-overflow: ellipsis;overflow:hidden;"><?php echo $key->text;?></p>
                                         <ul class="list-inline"><li><a href="../controler/clickGolos.php?id=<?=$id ?>"><?php //echo $key->date;?></a></li>
-                                            <li><a href="../controler/clickGolos.php?$i=1&id=<?=$id ?>"><i class="glyphicon glyphicon-thumbs-up"><?php echo $key->golos ?></i></a> &nbsp; &nbsp; &nbsp;<a href="#"></li>
+                                            <li><a href="../controler/clickGolos.php?i=1&id=<?=$id ?>"><i class="glyphicon glyphicon-thumbs-up"><?php echo $key->golos ?></i></a> &nbsp; &nbsp; &nbsp;<a href="#"></li>
                                             <li><a href=""><i class="glyphicon glyphicon-thumbs-down"></i></a></li>
                                         </ul>
                                         <!--<p class="lead"><a href="news_name.php?id=<?=$id ?>" style="color:#fff;"><button class="btn btn-primary" >Подробнее...</button></a></p>-->

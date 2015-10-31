@@ -13,6 +13,24 @@ footer {
   background-color:#ededed;
 }
 
+.table-zakaz tr.danger td{
+   background: #f62aa2 !important;
+   color:#fff;
+ }
+
+.table-zakaz tr.success td{
+  background: #07911e !important;
+  color:#fff;
+}
+
+.table-zakaz tr.info td{
+  background: #4080f4 !important;
+  color:#fff;
+}
+
+.table-zakaz th{
+  text-align:center;
+}
 
 #masthead {
   min-height:199px;

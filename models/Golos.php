@@ -8,7 +8,7 @@ class Golos
 
     public static function findAll(){
         $dbh = new Connection();
-        $sql = 'SELECT * FROM ' . self::TABLE . ' ORDER BY id DESC';
+        $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id DESC';
         $sth = $dbh->prepare($sql);
         $sth->execute();
         return $sth->fetchAll(PDO::FETCH_CLASS, self::class);
@@ -19,7 +19,7 @@ class Golos
     public function deleteById($id){
         $this->id = $id;
         $dbh = new Connection();
-        $sql = 'DELETE FROM ' . self::TABLE .' WHERE id='.$id;
+        $sql = 'DELETE FROM ' . static::TABLE .' WHERE id='.$id;
         $sth = $dbh->prepare($sql);
         $sth->execute();
 

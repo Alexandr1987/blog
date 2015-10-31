@@ -11,7 +11,7 @@ if (!isUser()){
 
 
 <?php require_once __DIR__ . '/header.php';?>
-<div class="container" style="margin-top:100px;">
+<div class="container" >
 
   <div class="row" >
     <!-- Button trigger modal -->
