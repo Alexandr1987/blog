@@ -56,7 +56,7 @@
                                 <button type="button" class="btn btn-danger">Отмена</button>
                             </a>
                         </td>
-                        <td></td>
+                        <td ><?php echo $item->avtor;  ?></td>
                     </tr>
 
 
@@ -93,7 +93,7 @@
                                     <button type="button" class="btn btn-danger">Отмена</button>
                                 </a>
                             </td>
-                            <td></td>
+                            <td ><?php echo $item->avtor;  ?></td>
                         </tr>
                     <?endif;?>
                     <?php if($item->status == 2):?>
@@ -125,7 +125,7 @@
                                     <button type="button" class="btn btn-danger">Отмена</button>
                                 </a>
                             </td>
-                            <td></td>
+                            <td ><?php echo $item->avtor;  ?></td>
                         </tr>
                     <?endif;?>
 

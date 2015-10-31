@@ -56,11 +56,12 @@ class Zakaz
 
     }
 
-    public function updateStatus($status,$id){
+    public function updateStatus($status,$id,$name){
         $this->id = $id;
         $this->status = $status;
+        $this->name = $name;
         $dbh = new ConnectionDiva();
-        $sql = "UPDATE zakaz SET status='$status' WHERE id='$id'";
+        $sql = "UPDATE zakaz SET status='$status',avtor='$name' WHERE id='$id'";
         $sth = $dbh->prepare($sql);
         $sth->execute();
 
