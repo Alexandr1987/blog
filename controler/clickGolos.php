@@ -4,7 +4,7 @@ require_once __DIR__.'/../autoload.php';
 
 
 
-if(!empty($_GET['$i']) && !empty($_GET['id']))
+if(!empty($_GET[$i]) && !empty($_GET[$id]))
 {
 $golosa = Golos::findAll();
 foreach($golosa as $value){

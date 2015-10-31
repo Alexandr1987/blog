@@ -25,6 +25,7 @@
         <div class="navbar-header">
             <a href="../views/logon.php" class="navbar-brand">Главная</a>
             <a href="../views/golos.php" class="navbar-brand">Проголосовать</a>
+            <a href="../views/admin.php" class="navbar-brand">Заказы</a>
         </div>
         <nav class="collapse navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
